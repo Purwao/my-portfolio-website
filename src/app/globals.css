@@ -2,20 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.cdnfonts.com/css/consola-mono');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #E3EEB2;
+  --foreground: #332D56;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #332D56;
+    --foreground: #E3EEB2;
   }
 }
 
 body {
+  overflow: hidden;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+  padding: 40px;
+}
+
+.typing-animation {
+  font-family: monospace;
+  font-size: 1.5em;
+  color: #E3EEB2;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid #E3EEB2;
+  width:max-content;
+  animation: blink 0.75s step-end infinite;
+
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: #E3EEB2; }
+}
+
+/* gradientbganimation */
+.midnight {
+  background: linear-gradient(to right,
+    #0b0f1a,
+    #101827,
+    #1f2937,
+    #2c3e50,
+    #101827
+  );
+  background-size: 400% 400%;
+  animation: smoothGradient 40s ease-in-out infinite;
+}
+
+@keyframes smoothGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Add to globals.css or relevant css file */
+@keyframes fadeOutScale {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+    transform: translateY(10px);
+  }
+}
+
+.fade-out {
+  animation: fadeOutScale 300ms ease forwards;
 }
