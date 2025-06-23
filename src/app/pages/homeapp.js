@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import Draggable from "react-draggable";
 import TitleBar from "./titlebar";
+import { useLanguage } from "@/app/context/languageContext";
 
 function HomeApp() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -17,6 +18,15 @@ function HomeApp() {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const nodeRef = useRef(null);
+
+  const { lang } = useLanguage();
+
+  const t={
+    HomeApp:lang === "en" ? "Home" : "Beranda",
+    greetings: lang === "en" ? "Hi, I'm " : "Hai, aku ",
+    movemeText: lang === "en" ? "--->move me<---" : "--->geser aku<---",
+  
+  }
 
   useEffect(() => {
     const currentPhrase = phrases[phraseIndex];
@@ -72,12 +82,12 @@ function HomeApp() {
       >
         <div ref={nodeRef} className=" flex flex-col justify-center items-center">
           <div className="handle w-6/12 ">
-            <TitleBar title="Home" close={0} hiddenControl={1} roundedStyle={1}/>
+            <TitleBar title={t.HomeApp} close={0} hiddenControl={1} roundedStyle={1} movemeText={t.movemeText}/>
           </div>
-          <div className="container w-6/12 h-full bg-accent2/10 rounded-b-xl border-accent4 border-solid border-2  flex justify-center items-center flex-col">
+          <div className="container w-6/12 h-full bg-accent2/90 rounded-b-xl border-accent4 border-solid border-2  flex justify-center items-center flex-col">
             <div className="text-5xl font-sans text-center">
               <span className="text-white">
-                Hi! I&apos;m <span className="text-accent3 font-bold">Purwao</span>
+                {t.greetings}<span className="text-accent3 font-bold">Purwao</span>
               </span>
             </div>
             <div className="typing-animation">

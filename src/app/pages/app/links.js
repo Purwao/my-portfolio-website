@@ -1,30 +1,40 @@
-'use client';
-import React, { useRef, useState } from 'react';
-import Draggable from 'react-draggable';
-import { FaDiscord, FaInstagram } from 'react-icons/fa';
-import { MdEmail } from 'react-icons/md';
-import TitleBar from '../titlebar';
+"use client";
+import React, { useRef, useState } from "react";
+import Draggable from "react-draggable";
+import { FaDiscord, FaInstagram } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import TitleBar from "../titlebar";
+import { useLanguage } from "@/app/context/languageContext";
+
 function Links(props) {
-  
-const nodeRef=useRef(null);
+  const nodeRef = useRef(null);
 
-const [isClosing,setIsClosing]=useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
-const handleClose = (action) =>{
- if (action == 1) {
-  setIsClosing(true);
-  setTimeout(() => {
-    console.log("Closing the Links page")
-    props.close?.(1);    
-  }, 300);
- }
-}
-
+  const handleClose = (action) => {
+    if (action == 1) {
+      setIsClosing(true);
+      setTimeout(() => {
+        console.log("Closing the Links page");
+        props.close?.(1);
+      }, 300);
+    }
+  };
+  const { lang } = useLanguage();
+  const text = {
+    link: lang === "en" ? "Links" : "Tautan",
+    linkDesc:
+      lang === "en"
+        ? "Clicking any link above will open a new tab!"
+        : "Klik link diatas akan membuka tab baru!",
+  };
 
   return (
-        <div className={`fixed top-0 left-0 w-full h-full z-40 pointer-events-none transition-opacity duration-300 ${
-            isClosing ? "opacity-0" : "opacity-100"
-          }`}>
+    <div
+      className={`fixed top-0 left-0 w-full h-full z-40 pointer-events-none transition-opacity duration-300 ${
+        isClosing ? "opacity-0" : "opacity-100"
+      }`}
+    >
       <Draggable
         nodeRef={nodeRef}
         handle=".handle"
@@ -36,11 +46,11 @@ const handleClose = (action) =>{
         >
           <div className="handle w-full">
             <TitleBar
-              title="Links"
+              title={text.link}
               close={handleClose}
               hiddenControl={0}
               roundedStyle={1}
-                    hiddenMoveMe={1}
+              hiddenMoveMe={1}
             />
           </div>
           <div className="w-full h-max container flex flex-col justify-center items-center gap-6">
@@ -73,8 +83,8 @@ const handleClose = (action) =>{
                 <span className="text-lg mt-1 font-sans">Email</span>
               </a>
             </div>
-            <div className='w-full flex justify-center items-center text-white/90 font-consolas p-3 bg-accent1/90 text-xs'>
-              <h1>Clicking any link above will open a new tab!</h1>
+            <div className="w-full flex justify-center items-center text-white/90 font-consolas p-3 bg-accent1/90 text-xs">
+              <h1>{text.linkDesc}</h1>
             </div>
           </div>
         </div>
@@ -83,4 +93,4 @@ const handleClose = (action) =>{
   );
 }
 
-export default Links
+export default Links;

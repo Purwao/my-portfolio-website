@@ -5,6 +5,8 @@ import Bonfire from "./app/bonfire";
 import Bonfirejpg from "../storage/photos/Bonfire.png";
 import Image from "next/image";
 
+import { useLanguage } from "../context/languageContext";
+
 import OpenPage from "../storage/audio/open.wav";
 import hoverPage from "../storage/audio/vordt.m4a";
 
@@ -12,6 +14,8 @@ function Appbar() {
   const [bonfire, setBonfire] = useState(false);
   const openSoundRef = useRef(null);
   const hoverSoundRef = useRef(null);
+
+  const {lang}=useLanguage();
 
   useEffect(() => {
     // Only run this on client
@@ -54,6 +58,10 @@ function Appbar() {
     }
   };
 
+  const text={
+    coolStuff: lang=== "en" ? "veri cool stuff :D" : "pamer projek :D",
+  }
+
   return (
     <div className="app-bar flex flex-col gap-8 justify-center items-center w-1/12 h-full">
       <button
@@ -65,7 +73,7 @@ function Appbar() {
       >
         <Image src={Bonfirejpg} width={50} height={50} alt="Bonfire" />
         <h2 className="app-title font-consolas text-white text-sm">
-          Cool Stuff
+          {text.coolStuff}
         </h2>
       </button>
 

@@ -50,7 +50,7 @@ function TitleBar(props) {
         style={moveMeStyle}
         className="text-xs font-light flex text-accent1 w-full justify-center items-center font-consolas"
       >
-        {"--->"}move me{"<---"}
+        {props.movemeText}
       </h2>
 
       {/* Controls */}
