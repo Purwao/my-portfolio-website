@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import Bonfire from "./app/bonfire";
+import Rocket from "./app/rocket";
 import Bonfirejpg from "../storage/photos/Bonfire.png";
+import Rocketjpg from "../storage/photos/Rocket.png";
 import Image from "next/image";
 
 import { useLanguage } from "../context/languageContext";
@@ -12,6 +14,7 @@ import hoverPage from "../storage/audio/vordt.m4a";
 
 function Appbar() {
   const [bonfire, setBonfire] = useState(false);
+  const [rocket, setRocket] = useState(false);
   const openSoundRef = useRef(null);
   const hoverSoundRef = useRef(null);
 
@@ -27,6 +30,15 @@ function Appbar() {
 
   const openBonfire = () => {
     setBonfire(true);
+    const audio = openSoundRef.current;
+    if (audio) {
+      audio.currentTime = 0;
+      audio.volume = 1;
+      audio.play();
+    }
+  };
+  const openRocket = () => {
+    setRocket(true);
     const audio = openSoundRef.current;
     if (audio) {
       audio.currentTime = 0;
@@ -58,8 +70,15 @@ function Appbar() {
     }
   };
 
+  const handleRocketClose = (action) => {
+    if (action === 1) {
+      setRocket(false);
+    }
+  };
+
   const text={
-    coolStuff: lang=== "en" ? "veri cool stuff :D" : "pamer projek :D",
+    coolStuff: lang=== "en" ? "Cool stuff" : "Hal Keren",
+    APOD: lang=== "en" ? "Space Stuff" : "Luar Angkasa",
   }
 
   return (
@@ -76,8 +95,20 @@ function Appbar() {
           {text.coolStuff}
         </h2>
       </button>
+      <button
+        id="rocket"
+        onClick={openRocket}
+        className="app-box cursor-pointer flex flex-col gap-1 justify-center items-center transition duration-300 ease-in-out hover:scale-110"
+      >
+        <Image src={Rocketjpg} width={50} height={50} alt="Bonfire" />
+        <h2 className="app-title font-consolas text-white text-sm">
+          {text.APOD}
+        </h2>
+      </button>
+
 
       {bonfire && <Bonfire close={handleBonfireClose} />}
+      {rocket && <Rocket close={handleRocketClose} />}
     </div>
   );
 }
