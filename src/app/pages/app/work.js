@@ -7,6 +7,7 @@ import Mi from "../../storage/audio/mi.wav";
 import Fa from "../../storage/audio/fa.wav";
 import So from "../../storage/audio/so.wav";
 import { useLanguage } from "@/app/context/languageContext";
+import AnimatedCard from "@/app/components/AnimatedCard";
 
 function Work(props) {
    const nodeRef = useRef(null);
@@ -67,7 +68,8 @@ const text = {
 };
   return (
 <div className={`fixed top-0 left-0 w-full h-full z-40 pointer-events-none transition-opacity duration-300 ${isClosing ? "opacity-0" : "opacity-100"}`}>
-  <Draggable
+ 
+  <AnimatedCard key="work">  <Draggable
     nodeRef={nodeRef}
     handle=".handle"
     defaultPosition={{ x: 100, y: 100 }}
@@ -158,7 +160,8 @@ const text = {
         </div>
       </div>
     </div>
-  </Draggable>
+  </Draggable>  </AnimatedCard>
+
 </div>
 
   );

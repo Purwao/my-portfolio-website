@@ -5,6 +5,7 @@ import { FaDiscord, FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import TitleBar from "../titlebar";
 import { useLanguage } from "@/app/context/languageContext";
+import AnimatedCard from "@/app/components/AnimatedCard";
 
 function Links(props) {
   const nodeRef = useRef(null);
@@ -35,7 +36,7 @@ function Links(props) {
         isClosing ? "opacity-0" : "opacity-100"
       }`}
     >
-      <Draggable
+       <AnimatedCard key="links">      <Draggable
         nodeRef={nodeRef}
         handle=".handle"
         defaultPosition={{ x: 100, y: 100 }}
@@ -89,6 +90,8 @@ function Links(props) {
           </div>
         </div>
       </Draggable>
+         </AnimatedCard>
+ 
     </div>
   );
 }

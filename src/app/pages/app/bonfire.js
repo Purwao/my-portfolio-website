@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import Draggable from "react-draggable";
 import TitleBar from "../titlebar";
 import Image from "next/image";
+import AnimatedCard from "@/app/components/AnimatedCard";
 
 function Bonfire({ close }) {
   const nodeRef = useRef(null);
@@ -22,7 +23,9 @@ function Bonfire({ close }) {
         isClosing ? "opacity-0" : "opacity-100"
       }`}
     >
-      <Draggable
+   
+      <AnimatedCard key="bonfire">
+   <Draggable
         nodeRef={nodeRef}
         handle=".handle"
         defaultPosition={{ x: 180, y: 100 }}
@@ -149,6 +152,8 @@ function Bonfire({ close }) {
           </div>
         </div>
       </Draggable>
+      </AnimatedCard>
+ 
     </div>
   );
 }

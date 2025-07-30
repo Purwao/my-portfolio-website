@@ -6,6 +6,7 @@ import Draggable from "react-draggable";
 import Image from "next/image";
 import { IoMailOutline } from "react-icons/io5";
 import { useLanguage } from "@/app/context/languageContext";
+import AnimatedCard from "@/app/components/AnimatedCard";
 
 function Contact({ close }) {
   const nodeRef = useRef(null);
@@ -35,7 +36,8 @@ function Contact({ close }) {
         isClosing ? "opacity-0" : "opacity-100"
       }`}
     >
-      <Draggable nodeRef={nodeRef} handle=".handle" defaultPosition={{ x: 100, y: 100 }}>
+       <AnimatedCard key="contact">
+          <Draggable nodeRef={nodeRef} handle=".handle" defaultPosition={{ x: 100, y: 100 }}>
         <div
           ref={nodeRef}
           className="pointer-events-auto absolute w-[30rem] rounded-2xl border border-accent4 bg-accent1/90 backdrop-blur-sm shadow-2xl overflow-hidden"
@@ -91,6 +93,8 @@ function Contact({ close }) {
           </div>
         </div>
       </Draggable>
+          </AnimatedCard>
+    
     </div>
   );
 }

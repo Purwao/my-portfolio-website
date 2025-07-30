@@ -6,6 +6,8 @@ import Draggable from "react-draggable";
 import zani from "../../storage/photos/zani.jpeg";
 import Image from "next/image";
 import { useLanguage } from "@/app/context/languageContext";
+   import AnimatedCard from "@/app/components/AnimatedCard";
+     
 
 function About(props) {
   const [isClosing, setIsClosing] = useState(false);
@@ -98,7 +100,7 @@ function About(props) {
         isClosing ? "opacity-0" : "opacity-100"
       }`}
     >
-      <Draggable
+       <AnimatedCard key="about">   <Draggable
         nodeRef={nodeRef}
         handle=".handle"
         defaultPosition={{ x: 100, y: 100 }}
@@ -208,7 +210,8 @@ function About(props) {
             </ul>
           </div>
         </div>
-      </Draggable>
+      </Draggable> </AnimatedCard>
+    
     </div>
   );
 }

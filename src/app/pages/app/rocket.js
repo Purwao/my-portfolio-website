@@ -4,6 +4,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 import TitleBar from "../titlebar";
+import AnimatedCard from "@/app/components/AnimatedCard";
 
 function Rocket({ close }) {
   const nodeRef = useRef(null);
@@ -41,8 +42,7 @@ function Rocket({ close }) {
       className={`fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 ${
         isClosing ? "opacity-0" : "opacity-100"
       }`}
-    >
-      <Draggable
+    > <AnimatedCard key="rocket">  <Draggable
         nodeRef={nodeRef}
         handle=".handle"
         defaultPosition={{ x: 180, y: 100 }}
@@ -107,7 +107,8 @@ function Rocket({ close }) {
             </div>
           </div>
         </div>
-      </Draggable>
+      </Draggable> </AnimatedCard>
+     
     </div>
   );
 }

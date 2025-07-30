@@ -6,6 +6,7 @@ import { FaMinus } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import AccordionOpen from "../../storage/audio/accordion.mp3";
 import { useLanguage } from "@/app/context/languageContext";
+import AnimatedCard from "@/app/components/AnimatedCard";
 
 const AccordionItem = ({ title, children, index, isOpen, toggle }) => {
   return (
@@ -189,7 +190,7 @@ function Faq(props) {
         isClosing ? "opacity-0" : "opacity-100"
       }`}
     >
-      <Draggable nodeRef={nodeRef} handle=".handle" defaultPosition={{ x: 100, y: 100 }}>
+       <AnimatedCard key="faq"> <Draggable nodeRef={nodeRef} handle=".handle" defaultPosition={{ x: 100, y: 100 }}>
         <div
           ref={nodeRef}
           className="pointer-events-auto absolute w-[90vw] max-w-xl h-[60vh] flex flex-col bg-accent1/90 backdrop-blur-sm shadow-2xl border border-accent4 rounded-2xl overflow-hidden"
@@ -218,6 +219,8 @@ function Faq(props) {
           </div>
         </div>
       </Draggable>
+         </AnimatedCard>
+      
     </div>
   );
 }
