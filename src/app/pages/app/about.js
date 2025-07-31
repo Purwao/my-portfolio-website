@@ -6,7 +6,7 @@ import Draggable from "react-draggable";
 import zani from "../../storage/photos/zani.jpeg";
 import Image from "next/image";
 import { useLanguage } from "@/app/context/languageContext";
-   import AnimatedCard from "@/app/components/AnimatedCard";
+import AnimatedCard from "@/app/components/AnimatedCard";
      
 
 function About(props) {

@@ -79,3 +79,40 @@ body {
 .fade-out {
   animation: fadeOutScale 300ms ease forwards;
 }
+
+/* panning rocket's image */
+
+@keyframes pan-up {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(-30%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.pan-up {
+  animation: pan-up 30s ease-in-out infinite;
+}
+
+/* scrollbar */
+
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #1a1a1a;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      background-color: #F5F5F5;
+
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(108 176 248 / var(--tw-text-opacity, 1));
+      border: 2px solid #121312;
+      cursor: pointer;
+    } 

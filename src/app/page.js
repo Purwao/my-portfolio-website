@@ -3,6 +3,7 @@ import TaskBar from "./pages/taskbar";
 import HomeApp from "./pages/homeapp";
 import Wave from "react-wavify";
 import { LanguageProvider } from "./context/languageContext";
+import WobblyScreen from "./components/WobblyScreen";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
           <HomeApp />
         </div>
         <TaskBar />
+        <WobblyScreen></WobblyScreen>
       </div>
     </LanguageProvider>
   );
